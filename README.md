@@ -180,3 +180,19 @@ interactive_chat()  # Type 'quit' to exit
 # Evaluate on test set
 evaluate_model_on_test_set(your_test_data)
 ```
+
+### Step 6: Save and Deploy the Model
+
+Choose your saving method:
+
+```python
+# Option 1: LoRA adapters (small, ~100MB)
+model.save_pretrained("my_model_lora")
+# Use with: FastLanguageModel.from_pretrained("my_model_lora")
+
+# Option 2: Merged model (large, ~16GB)
+model.save_pretrained_merged("my_model_merged", tokenizer, save_method="merged_16bit")
+
+# Option 3: Upload to Hugging Face
+model.push_to_hub("your-username/your-model-name", token="your_hf_token")
+```
