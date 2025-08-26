@@ -129,3 +129,23 @@ your_data = [
 - **Consistent Format**: Keep your responses in a consistent style and format
 - **Diverse Examples**: Cover various scenarios your model might encounter
 - **Clear Instructions**: Make sure questions are clear and unambiguous
+
+### Step 3: Adjust Hyperparameters (Training Parameters)
+Key parameters to modify based on your needs:
+
+```python
+# Model selection (choose based on your VRAM)
+model_name = "unsloth/llama-3.1-8b-instruct-bnb-4bit"  # ~3GB VRAM
+# model_name = "unsloth/llama-3.2-3b-instruct-bnb-4bit"  # ~2GB VRAM
+
+# Training duration
+max_steps = 60  # Quick test (increase to 200-500 for real training)
+# num_train_epochs = 1  # Alternative: train for full epochs
+
+# Learning rate (decrease if loss is unstable)
+learning_rate = 2e-4  # Try 1e-4 or 5e-5 for more conservative training
+
+# Batch size (increase if you have more VRAM)
+per_device_train_batch_size = 2  # Increase to 4 or 8 with more memory
+gradient_accumulation_steps = 4  # Effective batch size = 2 * 4 = 8
+```
