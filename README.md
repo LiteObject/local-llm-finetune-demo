@@ -149,3 +149,34 @@ learning_rate = 2e-4  # Try 1e-4 or 5e-5 for more conservative training
 per_device_train_batch_size = 2  # Increase to 4 or 8 with more memory
 gradient_accumulation_steps = 4  # Effective batch size = 2 * 4 = 8
 ```
+
+
+### Step 4: Run the Training Scrip & Monitor
+
+Watch these key metrics during training:
+
+- Loss: Should gradually decrease from ~2.0 to ~0.5-1.0
+- Memory Usage: Should stay within your GPU limits
+- Training Speed: ~1-2 steps per second is normal
+
+**Warning Signs**:
+
+- Loss stuck at high values (>2.0) → Lower learning rate
+- Loss drops to 0 → Reduce learning rate or increase dataset size
+- Out of memory errors → Reduce batch size or sequence length
+
+### Step 5: Test the Fine-tuned Model
+
+Use the built-in testing functions:
+
+```python
+# Single prompt test
+response = test_model("Your test question here")
+print(response)
+
+# Interactive chat
+interactive_chat()  # Type 'quit' to exit
+
+# Evaluate on test set
+evaluate_model_on_test_set(your_test_data)
+```
