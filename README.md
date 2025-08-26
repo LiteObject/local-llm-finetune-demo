@@ -94,3 +94,38 @@ import unsloth
 print(f"CUDA available: {torch.cuda.is_available()}")
 print(f"Unsloth version: {unsloth.__version__}")
 ```
+
+## Step-by-Step Tutorial
+
+### Step 1: Understand the Code Structure
+
+The demo is organized into 9 main sections:
+- Installation & Setup - Import libraries and check GPU
+- Model Loading - Load Llama-3.1-8B with 4-bit quantization
+- LoRA Configuration - Prepare model for efficient fine-tuning
+- Dataset Preparation - Format training data for chat template
+- Training Configuration - Set hyperparameters and training args
+- Training - Execute the fine-tuning process
+- Testing - Evaluate the fine-tuned model
+- Saving - Export model for deployment
+- Inference - Load and use the saved model
+
+### Step 2: Customize Your Dataset
+Replace the sample `customer_support_data` with your own data:
+
+```python
+your_data = [
+    {
+        "instruction": "Your question or prompt",
+        "input": "Optional additional context",
+        "output": "Expected response from the model"
+    },
+    # Add more examples...
+]
+```
+
+**Dataset Tips:**
+- **Quality > Quantity**: 50-200 high-quality examples often work better than thousands of poor ones
+- **Consistent Format**: Keep your responses in a consistent style and format
+- **Diverse Examples**: Cover various scenarios your model might encounter
+- **Clear Instructions**: Make sure questions are clear and unambiguous
